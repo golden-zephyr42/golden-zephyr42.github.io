@@ -1,0 +1,1425 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日主题大赛爆料在线 - 官方品牌社区,创意竞技影像平台</title>
+<meta name="description" content="每日主题大赛爆料在线官方网站，聚焦每日创意主题挑战与赛事爆料内容的视频品牌社区，汇聚创作者与企业共创高品质内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c2b4a'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23ffd166' stroke-width='4'/%3E%3Cpath d='M27 24l16 8-16 8z' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --dts-navy:#1c2b4a;
+    --dts-navy-soft:#2a3d63;
+    --dts-gold:#ffd166;
+    --dts-gold-deep:#e0a93a;
+    --dts-teal:#2bb3a3;
+    --dts-bg:#f5f7fb;
+    --dts-card:#ffffff;
+    --dts-text:#22304a;
+    --dts-muted:#6b7a93;
+    --dts-line:#e2e8f2;
+    --dts-radius:16px;
+    --dts-shadow:0 8px 28px rgba(28,43,74,.10);
+    --dts-shadow-hover:0 16px 40px rgba(28,43,74,.18);
+    --dts-top-offset:104px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--dts-top-offset);}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+    background:var(--dts-bg);color:var(--dts-text);line-height:1.75;font-size:16px;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .dts-shell{width:min(1200px,92%);margin:0 auto;}
+  .dts-btn{
+    display:inline-flex;align-items:center;gap:.5em;justify-content:center;
+    padding:.75em 1.6em;border-radius:999px;font-size:.95rem;font-weight:600;
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+  }
+  .dts-btn-gold{background:var(--dts-gold);color:#3a2a05;}
+  .dts-btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(255,209,102,.45);}
+  .dts-btn-ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff;}
+  .dts-btn-ghost:hover{background:rgba(255,255,255,.14);transform:translateY(-2px);}
+  .dts-btn-teal{background:var(--dts-teal);color:#fff;}
+  .dts-btn-teal:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(43,179,163,.4);}
+  .dts-tag{
+    display:inline-block;padding:.18em .7em;border-radius:999px;
+    font-size:.74rem;font-weight:600;letter-spacing:.02em;
+    background:rgba(43,179,163,.12);color:#177a6f;
+  }
+  .dts-tag-gold{background:rgba(224,169,58,.16);color:#8a6412;}
+
+  /* ============ 公告条 + 页头（吸顶） ============ */
+  .dts-sticky-wrap{position:sticky;top:0;z-index:900;}
+  .dts-announce{
+    background:linear-gradient(90deg,#152340,#22385f 55%,#1c2b4a);
+    color:#e8eefb;font-size:.84rem;
+  }
+  .dts-announce-inner{
+    display:flex;align-items:center;gap:.9rem;padding:.55rem 0;
+    overflow:hidden;white-space:nowrap;
+  }
+  .dts-announce-badge{
+    flex:0 0 auto;background:var(--dts-gold);color:#3a2a05;font-weight:700;
+    border-radius:6px;padding:.1em .55em;font-size:.76rem;
+  }
+  .dts-announce-track{
+    display:flex;gap:2.2rem;animation:dts-marquee 32s linear infinite;
+  }
+  .dts-announce-track:hover{animation-play-state:paused;}
+  .dts-announce-item{flex:0 0 auto;color:#d9e3f7;}
+  .dts-announce-item b{color:var(--dts-gold);font-weight:600;}
+  @keyframes dts-marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  .dts-header{
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--dts-line);
+  }
+  .dts-header-inner{
+    display:flex;align-items:center;gap:1.6rem;padding:.7rem 0;
+  }
+  .dts-logo{display:flex;align-items:center;gap:.6rem;flex:0 0 auto;}
+  .dts-logo-mark{width:40px;height:40px;}
+  .dts-logo-text{display:flex;flex-direction:column;line-height:1.2;}
+  .dts-logo-text strong{font-size:1.02rem;color:var(--dts-navy);letter-spacing:.01em;}
+  .dts-logo-text span{font-size:.66rem;color:var(--dts-muted);letter-spacing:.14em;}
+  .dts-nav{display:flex;gap:.2rem;margin-left:auto;}
+  .dts-nav a{
+    padding:.45rem .8rem;border-radius:8px;font-size:.9rem;color:#3a4a66;font-weight:500;
+    transition:background .2s,color .2s;
+  }
+  .dts-nav a:hover{background:#eef2fa;color:var(--dts-navy);}
+  .dts-search{position:relative;flex:0 0 210px;}
+  .dts-search input{
+    width:100%;padding:.5rem .9rem .5rem 2.1rem;border:1.5px solid var(--dts-line);
+    border-radius:999px;font-size:.85rem;background:#f8fafd;color:var(--dts-text);
+    outline:none;transition:border-color .2s,box-shadow .2s;
+  }
+  .dts-search input:focus{border-color:var(--dts-teal);box-shadow:0 0 0 3px rgba(43,179,163,.16);background:#fff;}
+  .dts-search-icon{position:absolute;left:.72rem;top:50%;transform:translateY(-50%);width:15px;height:15px;color:#9aa8bd;}
+  .dts-search-hint{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;
+    border-radius:12px;box-shadow:var(--dts-shadow);padding:.6rem .8rem;font-size:.82rem;
+    color:var(--dts-muted);display:none;z-index:50;
+  }
+  .dts-search-hint.dts-show{display:block;}
+  .dts-nav-toggle{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--dts-line);align-items:center;justify-content:center;}
+  .dts-nav-toggle span{display:block;width:18px;height:2px;background:var(--dts-navy);position:relative;}
+  .dts-nav-toggle span::before,.dts-nav-toggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--dts-navy);}
+  .dts-nav-toggle span::before{top:-6px;}
+  .dts-nav-toggle span::after{top:6px;}
+
+  /* ============ 首屏 ============ */
+  .dts-hero{
+    position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(ellipse at 82% 18%,rgba(255,209,102,.28),transparent 55%),
+      radial-gradient(ellipse at 12% 88%,rgba(43,179,163,.32),transparent 52%),
+      linear-gradient(135deg,#16233e 0%,#20345a 46%,#12314a 100%);
+  }
+  .dts-hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
+    background-size:26px 26px;opacity:.6;
+  }
+  .dts-hero-inner{
+    position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;
+    gap:3rem;align-items:center;padding:4.2rem 0 4.6rem;
+  }
+  .dts-hero-eyebrow{
+    display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;letter-spacing:.12em;
+    color:var(--dts-gold);border:1px solid rgba(255,209,102,.42);border-radius:999px;
+    padding:.3rem .9rem;margin-bottom:1.2rem;background:rgba(255,209,102,.08);
+  }
+  .dts-hero-eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--dts-gold);display:block;}
+  .dts-hero h1{
+    font-size:clamp(2.1rem,4.4vw,3.3rem);line-height:1.2;letter-spacing:.01em;
+    margin-bottom:.9rem;color:#fff;font-weight:800;
+  }
+  .dts-hero h1 em{font-style:normal;color:var(--dts-gold);}
+  .dts-hero-slogan{font-size:1.06rem;color:#c8d6ee;max-width:33em;margin-bottom:1.1rem;}
+  .dts-hero-desc{font-size:.92rem;color:#aebfd9;max-width:36em;margin-bottom:1.9rem;}
+  .dts-hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-bottom:2.4rem;}
+  .dts-hero-stats{display:flex;gap:2.4rem;flex-wrap:wrap;}
+  .dts-hero-stat b{font-size:1.55rem;color:var(--dts-gold);font-weight:800;letter-spacing:.01em;}
+  .dts-hero-stat span{display:block;font-size:.78rem;color:#9db0cd;margin-top:.1rem;letter-spacing:.04em;}
+  .dts-hero-visual{position:relative;}
+  .dts-hero-main-img{
+    border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.42);
+    border:1px solid rgba(255,255,255,.14);position:relative;
+  }
+  .dts-hero-badge{
+    position:absolute;right:-14px;top:-16px;background:var(--dts-gold);color:#3a2a05;
+    font-weight:800;font-size:.78rem;padding:.55rem 1rem;border-radius:12px;
+    box-shadow:0 10px 24px rgba(0,0,0,.3);transform:rotate(3deg);
+  }
+  .dts-hero-float{
+    position:absolute;left:-22px;bottom:26px;background:rgba(255,255,255,.97);color:var(--dts-text);
+    border-radius:14px;padding:.7rem 1rem;box-shadow:0 18px 40px rgba(0,0,0,.28);
+    font-size:.8rem;display:flex;align-items:center;gap:.6rem;
+  }
+  .dts-hero-float .dts-dot{width:8px;height:8px;border-radius:50%;background:var(--dts-teal);box-shadow:0 0 0 4px rgba(43,179,163,.2);}
+  .dts-hero-float b{color:var(--dts-navy);}
+
+  /* ============ 通用 section ============ */
+  .dts-section{padding:4.2rem 0;}
+  .dts-section-alt{background:#fff;border-top:1px solid var(--dts-line);border-bottom:1px solid var(--dts-line);}
+  .dts-section-head{max-width:46rem;margin-bottom:2.4rem;}
+  .dts-section-head h2{
+    font-size:clamp(1.55rem,2.7vw,2.1rem);color:var(--dts-navy);line-height:1.35;
+    letter-spacing:.01em;margin-bottom:.55rem;
+  }
+  .dts-section-head h2 em{font-style:normal;color:var(--dts-teal);}
+  .dts-section-head p{color:var(--dts-muted);font-size:.94rem;}
+  .dts-section-head.dts-center{margin-left:auto;margin-right:auto;text-align:center;}
+
+  /* 深度解析 */
+  .dts-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+  .dts-about-copy p{color:#3d4c67;font-size:.95rem;margin-bottom:1rem;}
+  .dts-about-copy p strong{color:var(--dts-navy);}
+  .dts-about-points{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem;}
+  .dts-about-points div{
+    background:linear-gradient(135deg,#f3f7ff,#eef6f5);border:1px solid var(--dts-line);
+    border-radius:14px;padding:1rem 1.1rem;
+  }
+  .dts-about-points b{display:block;color:var(--dts-navy);font-size:.95rem;margin-bottom:.25rem;}
+  .dts-about-points span{font-size:.8rem;color:var(--dts-muted);}
+  .dts-about-side{
+    background:linear-gradient(160deg,var(--dts-navy),#24395f);border-radius:20px;
+    padding:1.8rem;color:#dbe5f6;position:sticky;top:calc(var(--dts-top-offset) + 1.2rem);
+  }
+  .dts-about-side h3{color:#fff;font-size:1.1rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.5rem;}
+  .dts-about-side h3::before{content:"";width:4px;height:18px;background:var(--dts-gold);border-radius:2px;}
+  .dts-about-side li{
+    display:flex;gap:.7rem;font-size:.86rem;padding:.65rem 0;border-bottom:1px dashed rgba(255,255,255,.14);
+    color:#bccce6;
+  }
+  .dts-about-side li:last-child{border-bottom:none;}
+  .dts-about-side li b{color:var(--dts-gold);flex:0 0 auto;font-weight:700;}
+
+  /* 焦点内容 */
+  .dts-focus-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.4rem;}
+  .dts-focus-main{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--dts-shadow);}
+  .dts-focus-main img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;transition:transform .5s;}
+  .dts-focus-main:hover img{transform:scale(1.03);}
+  .dts-focus-main-cap{
+    position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1.5rem 1.3rem;
+    background:linear-gradient(transparent,rgba(10,18,33,.9));color:#fff;
+  }
+  .dts-focus-main-cap h3{font-size:1.22rem;line-height:1.4;margin:.4rem 0 .3rem;}
+  .dts-focus-main-cap p{font-size:.82rem;color:#c3d2e6;}
+  .dts-focus-side{display:grid;grid-template-rows:repeat(2,1fr);gap:1.4rem;}
+  .dts-focus-small{
+    display:grid;grid-template-columns:132px 1fr;gap:1rem;background:var(--dts-card);
+    border-radius:16px;padding:.85rem;box-shadow:var(--dts-shadow);align-items:center;
+    transition:transform .22s,box-shadow .22s;
+  }
+  .dts-focus-small:hover{transform:translateY(-3px);box-shadow:var(--dts-shadow-hover);}
+  .dts-focus-small img{border-radius:10px;aspect-ratio:16/10;object-fit:cover;}
+  .dts-focus-small h3{font-size:.95rem;color:var(--dts-navy);line-height:1.4;margin:.3rem 0;}
+  .dts-focus-small p{font-size:.76rem;color:var(--dts-muted);}
+
+  /* 视频流 */
+  .dts-video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  .dts-video-grid.dts-two-col{grid-template-columns:repeat(2,1fr);}
+  .dts-video-card{
+    background:var(--dts-card);border-radius:18px;overflow:hidden;box-shadow:var(--dts-shadow);
+    display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;
+  }
+  .dts-video-card:hover{transform:translateY(-5px);box-shadow:var(--dts-shadow-hover);}
+  .dts-video-cover{position:relative;overflow:hidden;}
+  .dts-video-cover img{aspect-ratio:16/9;object-fit:cover;width:100%;transition:transform .5s;}
+  .dts-video-card:hover .dts-video-cover img{transform:scale(1.05);}
+  .dts-video-play{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(rgba(10,18,33,.02),rgba(10,18,33,.3));
+  }
+  .dts-video-play span{
+    width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.9);
+    display:flex;align-items:center;justify-content:center;transition:transform .25s,background .25s;
+  }
+  .dts-video-card:hover .dts-video-play span{transform:scale(1.1);background:var(--dts-gold);}
+  .dts-video-play svg{width:16px;height:16px;fill:var(--dts-navy);margin-left:3px;}
+  .dts-video-tagline{position:absolute;left:.7rem;top:.7rem;background:rgba(28,43,74,.86);color:#ffd166;font-size:.72rem;font-weight:600;padding:.2em .65em;border-radius:6px;}
+  .dts-video-dur{position:absolute;right:.7rem;bottom:.7rem;background:rgba(10,18,33,.8);color:#fff;font-size:.72rem;padding:.15em .5em;border-radius:5px;}
+  .dts-video-body{padding:1rem 1.05rem 1.15rem;display:flex;flex-direction:column;flex:1;}
+  .dts-video-body h3{font-size:1rem;color:var(--dts-navy);line-height:1.45;margin-bottom:.35rem;}
+  .dts-video-body > p{font-size:.82rem;color:var(--dts-muted);margin-bottom:.8rem;flex:1;}
+  .dts-video-meta{
+    display:flex;align-items:center;gap:.55rem;font-size:.76rem;color:var(--dts-muted);
+    padding-top:.7rem;border-top:1px solid var(--dts-line);margin-bottom:.7rem;
+  }
+  .dts-avatar{
+    width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:.72rem;font-weight:700;color:#fff;flex:0 0 auto;
+  }
+  .dts-video-actions{display:flex;gap:.5rem;align-items:center;}
+  .dts-act-btn{
+    display:inline-flex;align-items:center;gap:.32rem;font-size:.78rem;color:var(--dts-muted);
+    padding:.3em .62em;border-radius:8px;border:1px solid var(--dts-line);background:#fafcff;
+    transition:all .18s;
+  }
+  .dts-act-btn:hover{border-color:var(--dts-teal);color:#177a6f;background:#f0fbfa;}
+  .dts-act-btn.dts-acted{background:linear-gradient(135deg,#fff3d4,#ffe9b0);border-color:var(--dts-gold-deep);color:#8a6412;}
+  .dts-act-btn svg{width:13px;height:13px;fill:currentColor;}
+  .dts-act-btn:nth-child(3){margin-left:auto;}
+
+  /* 专题 */
+  .dts-topic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem;}
+  .dts-topic-card{
+    border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--dts-shadow);
+    display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;
+  }
+  .dts-topic-card:hover{transform:translateY(-4px);box-shadow:var(--dts-shadow-hover);}
+  .dts-topic-card img{aspect-ratio:16/10;object-fit:cover;width:100%;}
+  .dts-topic-body{padding:1rem 1.05rem 1.15rem;display:flex;flex-direction:column;flex:1;gap:.4rem;}
+  .dts-topic-body h3{font-size:.98rem;color:var(--dts-navy);line-height:1.4;}
+  .dts-topic-body p{font-size:.79rem;color:var(--dts-muted);flex:1;}
+  .dts-topic-state{font-size:.74rem;color:var(--dts-teal);font-weight:600;display:flex;align-items:center;gap:.35rem;}
+  .dts-topic-state i{width:7px;height:7px;border-radius:50%;background:var(--dts-teal);display:inline-block;}
+  .dts-topic-state.dts-off{color:#b08734;}
+  .dts-topic-state.dts-off i{background:#e0a93a;}
+
+  /* 创作者 */
+  .dts-creator-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;}
+  .dts-creator-card{
+    background:#fff;border-radius:18px;padding:1.5rem 1.2rem 1.25rem;text-align:center;
+    box-shadow:var(--dts-shadow);transition:transform .25s,box-shadow .25s;position:relative;
+  }
+  .dts-creator-card:hover{transform:translateY(-5px);box-shadow:var(--dts-shadow-hover);}
+  .dts-creator-avatar{
+    width:70px;height:70px;border-radius:50%;margin:0 auto .8rem;display:flex;
+    align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;
+    box-shadow:0 8px 20px rgba(28,43,74,.22);
+  }
+  .dts-creator-card h3{font-size:1rem;color:var(--dts-navy);margin-bottom:.2rem;}
+  .dts-creator-card .dts-creator-field{font-size:.77rem;color:var(--dts-teal);font-weight:600;margin-bottom:.55rem;}
+  .dts-creator-card p{font-size:.79rem;color:var(--dts-muted);line-height:1.65;margin-bottom:.9rem;min-height:3.3em;}
+  .dts-creator-nums{display:flex;justify-content:center;gap:1.5rem;font-size:.74rem;color:var(--dts-muted);padding-top:.8rem;border-top:1px solid var(--dts-line);}
+  .dts-creator-nums b{display:block;color:var(--dts-navy);font-size:.92rem;}
+  .dts-creator-more{
+    margin-top:.85rem;font-size:.78rem;color:var(--dts-teal);font-weight:600;
+    border:1px solid rgba(43,179,163,.35);border-radius:999px;padding:.3em .9em;
+    transition:background .2s;
+  }
+  .dts-creator-more:hover{background:rgba(43,179,163,.1);}
+
+  /* 榜单 */
+  .dts-rank-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
+  .dts-rank-list{background:#fff;border-radius:18px;box-shadow:var(--dts-shadow);padding:1.4rem 1.5rem;}
+  .dts-rank-list h3{font-size:1rem;color:var(--dts-navy);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+  .dts-rank-list h3 span{font-size:.72rem;color:var(--dts-muted);font-weight:400;margin-left:auto;}
+  .dts-rank-item{display:flex;align-items:center;gap:.85rem;padding:.6rem 0;border-bottom:1px dashed var(--dts-line);}
+  .dts-rank-item:last-child{border-bottom:none;}
+  .dts-rank-no{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;background:#eef2fa;color:var(--dts-muted);flex:0 0 auto;}
+  .dts-rank-item:nth-child(2) .dts-rank-no{background:var(--dts-gold);color:#3a2a05;}
+  .dts-rank-item:nth-child(3) .dts-rank-no{background:#cfd9ea;color:#233;}
+  .dts-rank-item:nth-child(4) .dts-rank-no{background:#e8dcc4;color:#6b5321;}
+  .dts-rank-title{flex:1;font-size:.87rem;color:#33425e;line-height:1.4;}
+  .dts-rank-score{font-size:.78rem;color:var(--dts-teal);font-weight:700;}
+
+  /* 评价 */
+  .dts-review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;}
+  .dts-review-card{
+    background:#fff;border-radius:16px;padding:1.2rem 1.25rem;box-shadow:var(--dts-shadow);
+    font-size:.86rem;color:#3d4c67;position:relative;
+  }
+  .dts-review-card::before{
+    content:"“";font-size:2.6rem;color:rgba(43,179,163,.24);position:absolute;
+    top:.1rem;right:1rem;line-height:1;font-family:Georgia,serif;
+  }
+  .dts-review-card p{margin-bottom:1rem;line-height:1.75;}
+  .dts-review-user{display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:var(--dts-muted);}
+  .dts-review-user b{color:var(--dts-navy);font-size:.83rem;display:block;}
+  .dts-review-stars{color:var(--dts-gold-deep);letter-spacing:.1em;font-size:.8rem;margin-bottom:.7rem;}
+
+  /* 动态 */
+  .dts-news-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;}
+  .dts-news-item{
+    background:#fff;border-radius:16px;padding:1.2rem 1.3rem;box-shadow:var(--dts-shadow);
+    border-left:4px solid var(--dts-teal);transition:transform .22s;
+  }
+  .dts-news-item:hover{transform:translateX(4px);}
+  .dts-news-item time{font-size:.76rem;color:var(--dts-muted);font-weight:600;letter-spacing:.02em;}
+  .dts-news-item h3{font-size:.96rem;color:var(--dts-navy);margin:.35rem 0;line-height:1.45;}
+  .dts-news-item p{font-size:.81rem;color:var(--dts-muted);}
+
+  /* FAQ */
+  .dts-faq{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.4rem;}
+  .dts-faq details{
+    background:#fff;border-radius:12px;border:1px solid var(--dts-line);
+    padding:.95rem 1.15rem;transition:box-shadow .22s,border-color .22s;
+  }
+  .dts-faq details[open]{border-color:rgba(43,179,163,.5);box-shadow:0 10px 24px rgba(28,43,74,.09);}
+  .dts-faq summary{
+    cursor:pointer;font-size:.9rem;font-weight:600;color:var(--dts-navy);
+    list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  }
+  .dts-faq summary::-webkit-details-marker{display:none;}
+  .dts-faq summary::after{content:"+";font-size:1.1rem;color:var(--dts-teal);font-weight:400;transition:transform .2s;}
+  .dts-faq details[open] summary::after{transform:rotate(45deg);}
+  .dts-faq details p{font-size:.84rem;color:var(--dts-muted);margin-top:.7rem;line-height:1.75;}
+
+  /* 合作 & 联系 */
+  .dts-partner-row{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.6rem;}
+  .dts-partner{
+    flex:1 1 150px;text-align:center;background:#fff;border:1px solid var(--dts-line);
+    border-radius:12px;padding:.9rem .6rem;font-size:.84rem;color:#3d4c67;font-weight:600;
+    letter-spacing:.02em;transition:border-color .2s,color .2s,transform .2s;
+  }
+  .dts-partner:hover{border-color:var(--dts-teal);color:var(--dts-teal);transform:translateY(-2px);}
+  .dts-contact-box{
+    display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;background:linear-gradient(150deg,#182a49,#22406a);
+    border-radius:22px;padding:2.6rem;color:#dbe5f6;box-shadow:0 24px 50px rgba(16,28,50,.32);
+  }
+  .dts-contact-box h2{font-size:1.5rem;color:#fff;margin-bottom:.6rem;}
+  .dts-contact-box p{font-size:.9rem;color:#b3c4de;margin-bottom:1.4rem;}
+  .dts-contact-list{display:grid;gap:.7rem;font-size:.87rem;}
+  .dts-contact-list li{display:flex;gap:.6rem;color:#cfdcf0;}
+  .dts-contact-list b{color:var(--dts-gold);font-weight:600;flex:0 0 5.5em;}
+  .dts-contact-actions{display:flex;flex-direction:column;gap:.8rem;justify-content:center;}
+  .dts-contact-actions .dts-btn{width:100%;}
+
+  /* 页脚 */
+  .dts-footer{background:#101c31;color:#8fa1bd;font-size:.84rem;padding:3.2rem 0 1.6rem;}
+  .dts-footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:2.2rem;margin-bottom:2.4rem;}
+  .dts-footer .dts-logo-text strong{color:#fff;}
+  .dts-footer .dts-logo-text span{color:#7e90ad;}
+  .dts-footer-grid > div > h4{color:#fff;font-size:.92rem;margin-bottom:.9rem;font-weight:600;}
+  .dts-footer-grid p{line-height:1.85;margin-top:1rem;color:#8fa1bd;}
+  .dts-footer-links li{margin-bottom:.5rem;}
+  .dts-footer-links a:hover{color:var(--dts-gold);}
+  .dts-footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);padding-top:1.3rem;
+    display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;justify-content:space-between;
+    font-size:.78rem;color:#7689a6;
+  }
+  .dts-footer-bottom a:hover{color:var(--dts-gold);}
+
+  /* 通用小工具 */
+  .dts-toast{
+    position:fixed;left:50%;bottom:36px;transform:translate(-50%,26px);
+    background:rgba(20,32,54,.95);color:#fff;font-size:.86rem;padding:.72rem 1.3rem;
+    border-radius:10px;box-shadow:0 14px 34px rgba(0,0,0,.32);z-index:2000;
+    opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:82vw;
+  }
+  .dts-toast.dts-show{opacity:1;transform:translate(-50%,0);}
+  .dts-to-top{
+    position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;
+    background:var(--dts-navy);color:#fff;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 28px rgba(28,43,74,.35);z-index:800;opacity:0;pointer-events:none;
+    transition:opacity .25s,transform .25s,background .2s;
+  }
+  .dts-to-top.dts-show{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .dts-to-top:hover{background:var(--dts-teal);}
+  .dts-to-top svg{width:16px;height:16px;fill:#fff;}
+
+  .dts-modal-mask{
+    position:fixed;inset:0;background:rgba(13,23,40,.55);backdrop-filter:blur(3px);
+    display:none;align-items:center;justify-content:center;z-index:1500;padding:1.2rem;
+  }
+  .dts-modal-mask.dts-show{display:flex;}
+  .dts-modal{
+    background:#fff;border-radius:20px;width:min(460px,100%);padding:1.9rem;
+    box-shadow:0 30px 70px rgba(0,0,0,.3);max-height:86vh;overflow:auto;
+  }
+  .dts-modal h3{font-size:1.14rem;color:var(--dts-navy);margin-bottom:.5rem;}
+  .dts-modal .dts-modal-sub{font-size:.83rem;color:var(--dts-muted);margin-bottom:1.2rem;}
+  .dts-modal label{display:block;font-size:.82rem;font-weight:600;color:#3d4c67;margin-bottom:.35rem;}
+  .dts-modal input,.dts-modal textarea{
+    width:100%;border:1.5px solid var(--dts-line);border-radius:10px;padding:.6rem .8rem;
+    font-size:.87rem;font-family:inherit;color:var(--dts-text);outline:none;margin-bottom:.95rem;
+    transition:border-color .2s;
+  }
+  .dts-modal input:focus,.dts-modal textarea:focus{border-color:var(--dts-teal);}
+  .dts-modal textarea{resize:vertical;min-height:88px;}
+  .dts-modal-row{display:flex;gap:.7rem;justify-content:flex-end;margin-top:.4rem;}
+  .dts-modal-cancel{background:#eef2fa;color:#3d4c67;border-radius:999px;padding:.6em 1.3em;font-size:.87rem;font-weight:600;}
+  .dts-modal-cancel:hover{background:#e2e8f2;}
+  .dts-share-list{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1.2rem;}
+  .dts-share-list button{
+    border:1px solid var(--dts-line);border-radius:12px;padding:.75rem .3rem;font-size:.8rem;
+    color:#3d4c67;transition:all .18s;
+  }
+  .dts-share-list button:hover{border-color:var(--dts-teal);color:var(--dts-teal);background:#f3fbfa;}
+
+  /* 响应式 */
+  @media (max-width:1080px){
+    .dts-hero-inner{grid-template-columns:1fr;gap:2.4rem;}
+    .dts-hero-visual{max-width:560px;}
+    .dts-hero-float{left:12px;}
+    .dts-topic-grid{grid-template-columns:repeat(2,1fr);}
+    .dts-creator-grid{grid-template-columns:repeat(2,1fr);}
+    .dts-video-grid{grid-template-columns:repeat(2,1fr);}
+    .dts-review-grid,.dts-news-list{grid-template-columns:repeat(2,1fr);}
+    .dts-focus-grid{grid-template-columns:1fr;}
+    .dts-about-grid{grid-template-columns:1fr;}
+    .dts-about-side{position:static;}
+    .dts-footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:860px){
+    :root{--dts-top-offset:96px;}
+    .dts-nav{
+      display:none;position:absolute;top:100%;left:0;right:0;background:#fff;
+      flex-direction:column;padding:.7rem 5%;gap:.15rem;border-bottom:1px solid var(--dts-line);
+      box-shadow:0 18px 30px rgba(28,43,74,.14);
+    }
+    .dts-nav.dts-open{display:flex;}
+    .dts-header-inner{position:relative;flex-wrap:wrap;gap:.8rem;}
+    .dts-search{order:3;flex:1 1 100%;}
+    .dts-nav-toggle{display:flex;margin-left:auto;}
+    .dts-faq{grid-template-columns:1fr;}
+    .dts-contact-box{grid-template-columns:1fr;padding:2rem 1.5rem;}
+    .dts-rank-wrap{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .dts-section{padding:3rem 0;}
+    .dts-video-grid,.dts-video-grid.dts-two-col,.dts-topic-grid,.dts-creator-grid,
+    .dts-review-grid,.dts-news-list{grid-template-columns:1fr;}
+    .dts-focus-side{grid-template-rows:auto auto;}
+    .dts-about-points{grid-template-columns:1fr;}
+    .dts-hero-stats{gap:1.5rem;}
+    .dts-hero-stat b{font-size:1.3rem;}
+    .dts-footer-grid{grid-template-columns:1fr;}
+    .dts-focus-small{grid-template-columns:110px 1fr;}
+    .dts-share-list{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="dts-sticky-wrap">
+  <!-- 公告条 -->
+  <div class="dts-announce">
+    <div class="dts-shell dts-announce-inner">
+      <span class="dts-announce-badge">官方公告</span>
+      <div class="dts-announce-track">
+        <span class="dts-announce-item"><b>11/19 新增</b> 今日主题「城市清晨」投稿通道已开启，参赛作品突破 1,860 件</span>
+        <span class="dts-announce-item"><b>爆料机制更新</b> 赛事线索爆料入口支持图片与短视频附件上传</span>
+        <span class="dts-announce-item"><b>11 月赛季</b> 创意挑战投票榜实时更新，前十名可获官方品牌联名礼盒</span>
+        <span class="dts-announce-item"><b>11/19 新增</b> 今日主题「城市清晨」投稿通道已开启，参赛作品突破 1,860 件</span>
+        <span class="dts-announce-item"><b>爆料机制更新</b> 赛事线索爆料入口支持图片与短视频附件上传</span>
+        <span class="dts-announce-item"><b>11 月赛季</b> 创意挑战投票榜实时更新，前十名可获官方品牌联名礼盒</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页头 -->
+  <header class="dts-header">
+    <div class="dts-shell dts-header-inner">
+      <a href="#dts-top" class="dts-logo" aria-label="每日主题大赛爆料在线官方网站首页">
+        <svg class="dts-logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#1c2b4a"/>
+          <circle cx="32" cy="32" r="17" fill="none" stroke="#ffd166" stroke-width="4"/>
+          <path d="M27 24l16 8-16 8z" fill="#ffd166"/>
+        </svg>
+        <span class="dts-logo-text">
+          <strong>每日主题大赛</strong>
+          <span>BAOLIAO ONLINE</span>
+        </span>
+      </a>
+      <nav class="dts-nav" id="dtsMainNav" aria-label="主导航">
+        <a href="#dts-focus">赛事焦点</a>
+        <a href="#dts-videos">爆料视频</a>
+        <a href="#dts-topics">主题专题</a>
+        <a href="#dts-creators">创作者</a>
+        <a href="#dts-rank">榜单</a>
+        <a href="#dts-news">企业动态</a>
+        <a href="#dts-faq">帮助</a>
+        <a href="#dts-contact">联系</a>
+      </nav>
+      <div class="dts-search">
+        <svg class="dts-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>
+        </svg>
+        <input type="search" id="dtsSearchInput" placeholder="搜索主题、爆料、创作者…" aria-label="站内搜索">
+        <div class="dts-search-hint" id="dtsSearchHint"></div>
+      </div>
+      <button class="dts-nav-toggle" id="dtsNavToggle" aria-label="展开或收起导航菜单" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+</div>
+
+<main id="dts-top">
+
+  <!-- 首屏 -->
+  <section class="dts-hero">
+    <div class="dts-shell dts-hero-inner">
+      <div class="dts-hero-copy">
+        <span class="dts-hero-eyebrow"><i></i>官方网站 · 创意竞技影像社区</span>
+        <h1>每日主题大赛<em>爆料在线</em></h1>
+        <p class="dts-hero-slogan">每天一个主题，每天一次现场。这里是创意赛事的官方品牌阵地，也是爆料与作品的真实集散地。</p>
+        <p class="dts-hero-desc">作为深耕创意竞技垂直领域的官方平台，我们持续运营每日主题挑战、赛事爆料与创作者社区，用专业影像与真实故事，陪伴每一位参与者走过从灵感到发布的全过程。</p>
+        <div class="dts-hero-actions">
+          <a href="#dts-videos" class="dts-btn dts-btn-gold">进入爆料视频区</a>
+          <a href="#dts-topics" class="dts-btn dts-btn-ghost">查看今日主题</a>
+        </div>
+        <div class="dts-hero-stats">
+          <div class="dts-hero-stat"><b data-dts-count="1860">0</b><span>今日参赛作品</span></div>
+          <div class="dts-hero-stat"><b data-dts-count="42700">0</b><span>累计主题场次</span></div>
+          <div class="dts-hero-stat"><b data-dts-count="312">0</b><span>合作创作者团队</span></div>
+        </div>
+      </div>
+      <div class="dts-hero-visual">
+        <div class="dts-hero-main-img">
+          <svg viewBox="0 0 640 400" width="100%" role="img" aria-label="每日主题大赛爆料在线赛事现场主视觉">
+            <defs>
+              <linearGradient id="dtsHeroBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#24395f"/><stop offset=".55" stop-color="#1b2f4d"/><stop offset="1" stop-color="#123146"/>
+              </linearGradient>
+              <linearGradient id="dtsHeroGold" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#ffd166"/><stop offset="1" stop-color="#e0a93a"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="400" fill="url(#dtsHeroBg)"/>
+            <g opacity=".22" stroke="#7fa8c9" stroke-width="1">
+              <path d="M0 90H640M0 170H640M0 250H640M0 330H640"/>
+              <path d="M120 0V400M260 0V400M400 0V400M540 0V400"/>
+            </g>
+            <circle cx="500" cy="86" r="54" fill="none" stroke="#ffd166" stroke-width="3" opacity=".55"/>
+            <circle cx="500" cy="86" r="30" fill="#ffd166" opacity=".18"/>
+            <path d="M492 74l22 12-22 12z" fill="#ffd166"/>
+            <rect x="58" y="120" width="300" height="176" rx="14" fill="#0e2036" opacity=".85"/>
+            <rect x="72" y="134" width="272" height="112" rx="9" fill="#1e3a5c"/>
+            <path d="M186 168l34 22-34 22z" fill="#ffd166" opacity=".9"/>
+            <rect x="72" y="258" width="150" height="9" rx="4" fill="#3a5a82"/>
+            <rect x="72" y="276" width="96" height="7" rx="3.5" fill="#2e4a6c"/>
+            <g fill="#2bb3a3">
+              <circle cx="392" cy="266" r="7"/><circle cx="418" cy="266" r="7" opacity=".7"/><circle cx="444" cy="266" r="7" opacity=".45"/>
+            </g>
+            <rect x="370" y="298" width="196" height="48" rx="10" fill="#ffd166" opacity=".92"/>
+            <rect x="386" y="316" width="112" height="11" rx="5.5" fill="#3a2a05"/>
+            <text x="58" y="352" fill="#8fb0d0" font-size="15" font-family="sans-serif">DAILY THEME · CREATIVE ARENA</text>
+          </svg>
+        </div>
+        <span class="dts-hero-badge">今日主题开赛中</span>
+        <div class="dts-hero-float"><span class="dts-dot"></span><span><b>实时爆料</b> 3 条新线索待认证</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌深度解析 -->
+  <section class="dts-section" id="dts-about">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>关于「每日主题大赛爆料在线」<em>一场持续运营的创意现场</em></h2>
+        <p>从每日主题到赛事爆料，我们把竞技、影像与社区放在同一个坐标里。</p>
+      </div>
+      <div class="dts-about-grid">
+        <div class="dts-about-copy">
+          <p><strong>每日主题大赛爆料在线</strong>是一个以「每日主题」为核心节奏的创意竞技官方网站。我们相信，好创意需要被看见，也需要被真实记录。平台围绕每一天发布的创作主题，组织赛事挑战、作品征集、爆料线索与社区讨论，让创作者、观众与品牌方在同一个内容生态中完成交流与协作。</p>
+          <p>作为深耕创意竞技垂直领域的官方平台，我们并不追求把内容做成一次性爆发的流量池，而是通过<strong>持续运营</strong>的每日主题机制，把灵感沉淀为作品，把作品沉淀为口碑。每一位参与者都可以在平台上完成上传、报名、投票、下载素材、查看攻略等完整动作，也能通过爆料入口把赛场内外的真实线索交给官方核验，让赛事的公正性与透明度被更多人看见。</p>
+          <p>平台的内容生态由三部分构成：其一是<strong>每日主题赛事</strong>，每天一个题目，鼓励短周期的高密度创作；其二是<strong>爆料与现场</strong>，通过创作者的第一视角记录赛事进程、幕后花絮与现场故事；其三是<strong>社区与成长</strong>，借助专题企划、创作者矩阵与榜单，为新人提供被看见的机会，为成熟团队提供更高密度的交流场域。</p>
+          <p>我们坚持原创、正版与高清的内容标准，所有官方发布的主题作品均经过基础审核，确保标签、版权与作者信息清晰可查。企业与合作品牌可以在平台上发起定制主题、联名挑战与创意共创，创作者则通过投稿、比赛与报名获得展示与成长机会。我们希望这个平台既专业，也温暖；既有竞技的紧张感，也有社区的包容度。</p>
+          <p>在过去一年中，平台累计上线超过 420 场主题赛事，沉淀了两万余件可见作品，并与多家影像、文创与生活方式品牌建立了长期合作。这些数字背后，是每一位创作者在深夜剪片、在清晨外拍、在评论区互相打气的真实日常。我们把这些日常记录下来，也把其中值得被分享的部分，做成<strong>每日主题大赛爆料在线</strong>持续更新的内容。</p>
+          <p>如果你刚刚来到这里，可以从今日主题开始：看一眼题目，投一件作品，留一句评论，或者只是安静地看完一支爆料视频。这里没有门槛，只有持续发生的创意。我们期待与你在这个官方网站相遇，也期待你的作品成为下一期专题里的主角。</p>
+        </div>
+        <aside class="dts-about-side">
+          <h3>平台关键词</h3>
+          <ul>
+            <li><b>每日主题</b><span>每天 09:00 发布新题目，24 小时创作窗口</span></li>
+            <li><b>官方爆料</b><span>赛事线索、现场记录与幕后花絮的核验通道</span></li>
+            <li><b>原创正版</b><span>作品版权信息可查，支持原创作者维权</span></li>
+            <li><b>高清品质</b><span>官方推荐位优先展示高清完整作品</span></li>
+            <li><b>社区共创</b><span>投票、评论、挑战与联名企划持续开放</span></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="dts-section dts-section-alt" id="dts-focus">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>赛事焦点 <em>今日值得先看的三件事</em></h2>
+        <p>官方编辑部从当日投稿与爆料线索中挑出的重点内容，涵盖主题现场、幕后与深度观察。</p>
+      </div>
+      <div class="dts-focus-grid">
+        <article class="dts-focus-main">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23142b47'/%3E%3Cstop offset='.6' stop-color='%232a4a6e'/%3E%3Cstop offset='1' stop-color='%23133146'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='500' fill='url(%23g1)'/%3E%3Ccircle cx='640' cy='120' r='90' fill='%23ffd166' opacity='.16'/%3E%3Ccircle cx='640' cy='120' r='46' fill='none' stroke='%23ffd166' stroke-width='3' opacity='.7'/%3E%3Cpath d='M628 104l26 16-26 16z' fill='%23ffd166'/%3E%3Crect x='70' y='150' width='360' height='220' rx='16' fill='%230e2036' opacity='.82'/%3E%3Crect x='88' y='168' width='324' height='150' rx='10' fill='%231e3a5c'/%3E%3Cg fill='%235b83ab'%3E%3Crect x='108' y='196' width='120' height='10' rx='5'/%3E%3Crect x='108' y='220' width='200' height='8' rx='4'/%3E%3Crect x='108' y='242' width='160' height='8' rx='4'/%3E%3C/g%3E%3Cpath d='M258 226l30 18-30 18z' fill='%23ffd166' opacity='.92'/%3E%3Crect x='88' y='338' width='180' height='10' rx='5' fill='%232bb3a3'/%3E%3Ctext x='70' y='430' fill='%238fb0d0' font-size='18' font-family='sans-serif'%3E主题现场 · 凌晨四点的城市%3C/text%3E%3C/svg%3E" alt="赛事焦点：凌晨四点城市清晨主题现场直播画面">
+          <div class="dts-focus-main-cap">
+            <span class="dts-tag">今日主题 · 城市清晨</span>
+            <h3>凌晨四点的城市清晨：一场从街头开始的 24 小时创作接力</h3>
+            <p>官方摄制组跟随三位创作者，从菜市场到地铁首班车，记录今日主题的完整创作过程。</p>
+          </div>
+        </article>
+        <div class="dts-focus-side">
+          <article class="dts-focus-small">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%232a2140'/%3E%3Crect x='30' y='40' width='150' height='150' rx='10' fill='%233c3160'/%3E%3Ccircle cx='290' cy='110' r='58' fill='%23ffd166' opacity='.24'/%3E%3Ccircle cx='290' cy='110' r='30' fill='%23ffd166'/%3E%3Cpath d='M282 98l18 12-18 12z' fill='%232a2140'/%3E%3Cg fill='%236f5f9c'%3E%3Crect x='48' y='64' width='110' height='9' rx='4.5'/%3E%3Crect x='48' y='86' width='82' height='7' rx='3.5'/%3E%3Crect x='48' y='106' width='96' height='7' rx='3.5'/%3E%3C/g%3E%3Ctext x='30' y='222' fill='%23a99cd0' font-size='14' font-family='sans-serif'%3E爆料线索核验室%3C/text%3E%3C/svg%3E" alt="赛事焦点：爆料线索核验室内部流程界面">
+            <div>
+              <span class="dts-tag dts-tag-gold">爆料机制</span>
+              <h3>一条爆料如何被核验：官方线索处理流程首次公开</h3>
+              <p>从提交到公示，平均 6 小时内完成初核。</p>
+            </div>
+          </article>
+          <article class="dts-focus-small">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23123034'/%3E%3Cpath d='M0 190l100-60 80 40 90-70 130 90v60H0z' fill='%231b4a4a'/%3E%3Ccircle cx='330' cy='62' r='30' fill='%23ffd166' opacity='.85'/%3E%3Cg stroke='%232bb3a3' stroke-width='3' fill='none' opacity='.8'%3E%3Cpath d='M46 160l40 24 46-20 40 28'/%3E%3C/g%3E%3Crect x='40' y='42' width='90' height='12' rx='6' fill='%232bb3a3'/%3E%3Ctext x='40' y='232' fill='%237fbcb4' font-size='14' font-family='sans-serif'%3E创作者作品墙预览%3C/text%3E%3C/svg%3E" alt="赛事焦点：创作者作品墙精选画面预览">
+            <div>
+              <span class="dts-tag">本月企划</span>
+              <h3>「一天一主题」月度优秀作品墙开放预览</h3>
+              <p>32 件作品入选，涵盖影像、短片与实验创作。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 爆料视频流 -->
+  <section class="dts-section" id="dts-videos">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>爆料视频流 <em>现场 · 幕后 · 经验</em></h2>
+        <p>创作者与官方编辑部共同更新的视频内容。点击卡片上的操作按钮可完成点赞、收藏与分享，评论可展开查看。</p>
+      </div>
+      <div class="dts-video-grid" id="dtsVideoGrid">
+        <article class="dts-video-card">
+          <div class="dts-video-cover">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%231a2b46'/%3E%3Crect x='36' y='36' width='180' height='120' rx='10' fill='%23274468'/%3E%3Ccircle cx='360' cy='80' r='46' fill='%23ffd166' opacity='.22'/%3E%3Ccircle cx='360' cy='80' r='24' fill='%23ffd166'/%3E%3Cpath d='M352 70l16 10-16 10z' fill='%231a2b46'/%3E%3Cg fill='%234a6b93'%3E%3Crect x='36' y='180' width='200' height='10' rx='5'/%3E%3Crect x='36' y='202' width='140' height='8' rx='4'/%3E%3C/g%3E%3Cpath d='M300 170l70 40-70 40z' fill='%232bb3a3' opacity='.7'/%3E%3C/svg%3E" alt="爆料视频封面：街头摄影师的第一视角记录">
+            <div class="dts-video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            <span class="dts-video-tagline">爆料</span>
+            <span class="dts-video-dur">08:42</span>
+          </div>
+          <div class="dts-video-body">
+            <h3>主题现场：街头摄影师的第一视角，从选题到交片全记录</h3>
+            <p>凌晨四点出门、五点半开拍、中午十二点剪辑，一位独立摄影师如何用一支手机完成今日主题。</p>
+            <div class="dts-video-meta">
+              <span class="dts-avatar" style="background:#2bb3a3;">林</span>
+              <span>林深见野</span>
+              <span>· 11.19</span>
+            </div>
+            <div class="dts-video-actions">
+              <button class="dts-act-btn" data-dts-like><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9A5.4 5.4 0 0 1 12 5.5 5.4 5.4 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg><span>1,284</span></button>
+              <button class="dts-act-btn" data-dts-fav><svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>收藏</button>
+              <button class="dts-act-btn" data-dts-comment>评论</button>
+            </div>
+          </div>
+        </article>
+        <article class="dts-video-card">
+          <div class="dts-video-cover">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23332018'/%3E%3Crect x='0' y='180' width='480' height='90' fill='%234a3020'/%3E%3Ccircle cx='240' cy='110' r='62' fill='none' stroke='%23ffb35c' stroke-width='4' opacity='.8'/%3E%3Ccircle cx='240' cy='110' r='30' fill='%23ffb35c' opacity='.85'/%3E%3Cg fill='%23ffcf9c' opacity='.85'%3E%3Crect x='48' y='60' width='90' height='9' rx='4.5'/%3E%3Crect x='48' y='82' width='60' height='7' rx='3.5'/%3E%3C/g%3E%3Cpath d='M400 84l26 16-26 16z' fill='%23ffb35c'/%3E%3C/svg%3E" alt="爆料视频封面：评审室内的一次争议讨论">
+            <div class="dts-video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            <span class="dts-video-tagline">幕后</span>
+            <span class="dts-video-dur">12:15</span>
+          </div>
+          <div class="dts-video-body">
+            <h3>评审室的一天：今日主题评分标准与争议作品复盘</h3>
+            <p>三位评委围绕「叙事完整度」与「现场感」展开讨论，官方公开完整评分维度与作品复盘。</p>
+            <div class="dts-video-meta">
+              <span class="dts-avatar" style="background:#e0a93a;">周</span>
+              <span>周屿的观察室</span>
+              <span>· 11.18</span>
+            </div>
+            <div class="dts-video-actions">
+              <button class="dts-act-btn" data-dts-like><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9A5.4 5.4 0 0 1 12 5.5 5.4 5.4 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg><span>962</span></button>
+              <button class="dts-act-btn" data-dts-fav><svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>收藏</button>
+              <button class="dts-act-btn" data-dts-comment>评论</button>
+            </div>
+          </div>
+        </article>
+        <article class="dts-video-card">
+          <div class="dts-video-cover">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23142f2c'/%3E%3Cg stroke='%232bb3a3' stroke-width='3' fill='none' opacity='.55'%3E%3Cpath d='M0 210l90-70 80 44 110-86 100 60 100-72'/%3E%3C/g%3E%3Crect x='60' y='52' width='150' height='86' rx='10' fill='%231e4a45'/%3E%3Ctext x='78' y='86' fill='%237fe0d1' font-size='16' font-family='sans-serif'%3E%E9%80%89%E9%A2%98%E6%94%BB%E7%95%A5%3C/text%3E%3Ctext x='78' y='112' fill='%234f8f86' font-size='11' font-family='sans-serif'%3E7 STEPS%3C/text%3E%3Ccircle cx='370' cy='150' r='40' fill='%232bb3a3' opacity='.28'/%3E%3Cpath d='M358 138l20 12-20 12z' fill='%23a8ece1'/%3E%3C/svg%3E" alt="爆料视频封面：新人选题攻略流程图">
+            <div class="dts-video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            <span class="dts-video-tagline">攻略</span>
+            <span class="dts-video-dur">06:30</span>
+          </div>
+          <div class="dts-video-body">
+            <h3>新人参赛攻略：如何在一个主题里找到只有你能拍的角度</h3>
+            <p>从关键词拆解到分镜设计，一套可以直接套用的选题方法，附评论区常见问题整理。</p>
+            <div class="dts-video-meta">
+              <span class="dts-avatar" style="background:#4a7c8f;">阿</span>
+              <span>阿柚不加班</span>
+              <span>· 11.18</span>
+            </div>
+            <div class="dts-video-actions">
+              <button class="dts-act-btn" data-dts-like><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9A5.4 5.4 0 0 1 12 5.5 5.4 5.4 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg><span>2,051</span></button>
+              <button class="dts-act-btn" data-dts-fav><svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>收藏</button>
+              <button class="dts-act-btn" data-dts-comment>评论</button>
+            </div>
+          </div>
+        </article>
+        <article class="dts-video-card">
+          <div class="dts-video-cover">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23221f3a'/%3E%3Crect x='40' y='40' width='180' height='190' rx='12' fill='%23333055'/%3E%3Cg fill='%23938bd0'%3E%3Crect x='60' y='64' width='120' height='8' rx='4'/%3E%3Crect x='60' y='86' width='90' height='7' rx='3.5'/%3E%3Crect x='60' y='108' width='110' height='7' rx='3.5'/%3E%3Crect x='60' y='130' width='70' height='7' rx='3.5'/%3E%3C/g%3E%3Ccircle cx='350' cy='110' r='54' fill='%238d7ce0' opacity='.35'/%3E%3Cpath d='M338 92l28 18-28 18z' fill='%23d6cdf8'/%3E%3Crect x='290' y='186' width='130' height='10' rx='5' fill='%235d5292'/%3E%3C/svg%3E" alt="爆料视频封面：一支短片的三版剪辑对比">
+            <div class="dts-video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            <span class="dts-video-tagline">经验</span>
+            <span class="dts-video-dur">10:08</span>
+          </div>
+          <div class="dts-video-body">
+            <h3>同一支片子剪三版：节奏、情绪与信息量该如何取舍</h3>
+            <p>把同一素材剪成三个版本，逐帧对比节奏差异，讲清「短周期创作」里最容易被忽略的剪辑判断。</p>
+            <div class="dts-video-meta">
+              <span class="dts-avatar" style="background:#7c6bd6;">陈</span>
+              <span>陈默剪片室</span>
+              <span>· 11.17</span>
+            </div>
+            <div class="dts-video-actions">
+              <button class="dts-act-btn" data-dts-like><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9A5.4 5.4 0 0 1 12 5.5 5.4 5.4 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg><span>1,437</span></button>
+              <button class="dts-act-btn" data-dts-fav><svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>收藏</button>
+              <button class="dts-act-btn" data-dts-comment>评论</button>
+            </div>
+          </div>
+        </article>
+        <article class="dts-video-card">
+          <div class="dts-video-cover">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23341d2a'/%3E%3Ccircle cx='240' cy='135' r='86' fill='none' stroke='%23ff8d9e' stroke-width='3' opacity='.6'/%3E%3Ccircle cx='240' cy='135' r='48' fill='%23ff8d9e' opacity='.28'/%3E%3Cpath d='M228 115l30 20-30 20z' fill='%23ffd3da'/%3E%3Cg fill='%23d17b8c'%3E%3Crect x='40' y='40' width='96' height='10' rx='5'/%3E%3Crect x='40' y='64' width='64' height='8' rx='4'/%3E%3Crect x='344' y='208' width='96' height='10' rx='5'/%3E%3C/g%3E%3C/svg%3E" alt="爆料视频封面：一位素人创作者的首次参赛记录">
+            <div class="dts-video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            <span class="dts-video-tagline">人物</span>
+            <span class="dts-video-dur">09:26</span>
+          </div>
+          <div class="dts-video-body">
+            <h3>第一次参赛就进前十：一位素人创作者的七天记录</h3>
+            <p>从不敢按发布键到被推荐到首页，她把七天里的犹豫、修改与惊喜都录了下来。</p>
+            <div class="dts-video-meta">
+              <span class="dts-avatar" style="background:#d1697f;">苏</span>
+              <span>苏禾慢半拍</span>
+              <span>· 11.17</span>
+            </div>
+            <div class="dts-video-actions">
+              <button class="dts-act-btn" data-dts-like><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9A5.4 5.4 0 0 1 12 5.5 5.4 5.4 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg><span>3,180</span></button>
+              <button class="dts-act-btn" data-dts-fav><svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>收藏</button>
+              <button class="dts-act-btn" data-dts-comment>评论</button>
+            </div>
+          </div>
+        </article>
+        <article class="dts-video-card">
+          <div class="dts-video-cover">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23102b3a'/%3E%3Cg fill='%233b6f8c'%3E%3Crect x='40' y='180' width='40' height='60'/%3E%3Crect x='96' y='150' width='40' height='90'/%3E%3Crect x='152' y='120' width='40' height='120'/%3E%3Crect x='208' y='96' width='40' height='144'/%3E%3Crect x='264' y='140' width='40' height='100'/%3E%3Crect x='320' y='164' width='40' height='76'/%3E%3Crect x='376' y='110' width='40' height='130'/%3E%3C/g%3E%3Ccircle cx='400' cy='60' r='26' fill='%23ffd166' opacity='.8'/%3E%3Cpath d='M120 60l50 22-50 22z' fill='%23ffd166' opacity='.55'/%3E%3C/svg%3E" alt="爆料视频封面：赛事数据面板与趋势曲线">
+            <div class="dts-video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            <span class="dts-video-tagline">数据</span>
+            <span class="dts-video-dur">05:54</span>
+          </div>
+          <div class="dts-video-body">
+            <h3>11 月主题赛数据观察：哪些题材正在被更多人选择</h3>
+            <p>官方数据团队整理近 30 天投稿趋势，给出题材分布、时长偏好与完播率的三组关键结论。</p>
+            <div class="dts-video-meta">
+              <span class="dts-avatar" style="background:#3b7f99;">官</span>
+              <span>官方数据组</span>
+              <span>· 11.16</span>
+            </div>
+            <div class="dts-video-actions">
+              <button class="dts-act-btn" data-dts-like><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9A5.4 5.4 0 0 1 12 5.5 5.4 5.4 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg><span>784</span></button>
+              <button class="dts-act-btn" data-dts-fav><svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>收藏</button>
+              <button class="dts-act-btn" data-dts-comment>评论</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题 -->
+  <section class="dts-section dts-section-alt" id="dts-topics">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>主题专题 <em>正在更新的企划</em></h2>
+        <p>官方企划围绕不同主题展开，持续更新中。每个专题都标注了当前状态，方便你安排报名与上传时间。</p>
+      </div>
+      <div class="dts-topic-grid">
+        <article class="dts-topic-card">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23142b47'/%3E%3Ccircle cx='200' cy='120' r='70' fill='none' stroke='%23ffd166' stroke-width='3' opacity='.5'/%3E%3Cpath d='M40 200h320' stroke='%235b83ab' stroke-width='3'/%3E%3Crect x='60' y='150' width='80' height='50' fill='%23274468'/%3E%3Crect x='160' y='120' width='80' height='80' fill='%232bb3a3' opacity='.7'/%3E%3Crect x='260' y='90' width='80' height='110' fill='%23e0a93a' opacity='.75'/%3E%3C/svg%3E" alt="专题封面：城市清晨主题创作企划">
+          <div class="dts-topic-body">
+            <h3>城市清晨 · 24 小时创作企划</h3>
+            <p>以清晨为线索，记录城市醒来的过程。支持短片、纪录与实验影像三种形式。</p>
+            <span class="dts-topic-state"><i></i>报名中 · 剩余 6 小时</span>
+          </div>
+        </article>
+        <article class="dts-topic-card">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%232a1f38'/%3E%3Cg fill='%239a86c9'%3E%3Crect x='54' y='56' width='120' height='10' rx='5'/%3E%3Crect x='54' y='82' width='92' height='8' rx='4'/%3E%3C/g%3E%3Ccircle cx='300' cy='120' r='58' fill='%237c67b8' opacity='.42'/%3E%3Cpath d='M288 100l26 20-26 20z' fill='%23ded4ff'/%3E%3Crect x='54' y='176' width='180' height='8' rx='4' fill='%234e3f72'/%3E%3C/svg%3E" alt="专题封面：爆料核验公开课企划">
+          <div class="dts-topic-body">
+            <h3>爆料核验公开课 · 第二季</h3>
+            <p>拆解爆料线索的真实性判断、证据链整理与公共表达边界，共 6 期。</p>
+            <span class="dts-topic-state"><i></i>更新中 · 已上线 3 期</span>
+          </div>
+        </article>
+        <article class="dts-topic-card">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%231a302e'/%3E%3Cpath d='M0 200l80-60 70 34 80-70 90 60 80-50v90H0z' fill='%23245c52'/%3E%3Ccircle cx='320' cy='66' r='28' fill='%23ffd166' opacity='.8'/%3E%3Cg stroke='%235cbfae' stroke-width='3' fill='none'%3E%3Cpath d='M40 66h90M40 90h60'/%3E%3C/g%3E%3C/svg%3E" alt="专题封面：新人扶持计划企划">
+          <div class="dts-topic-body">
+            <h3>新人扶持计划 · 第七期</h3>
+            <p>面向首次参赛创作者，提供选题指导、剪辑建议与官方推荐位资源。</p>
+            <span class="dts-topic-state"><i></i>报名中 · 名额 120 位</span>
+          </div>
+        </article>
+        <article class="dts-topic-card">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23341f24'/%3E%3Ccircle cx='130' cy='120' r='56' fill='%23c46a5c' opacity='.5'/%3E%3Ccircle cx='270' cy='120' r='56' fill='%23e0a93a' opacity='.42'/%3E%3Cpath d='M190 78v84M210 78v84' stroke='%23f0d1b0' stroke-width='4' opacity='.7'/%3E%3Crect x='120' y='200' width='160' height='9' rx='4.5' fill='%237a4a44'/%3E%3C/svg%3E" alt="专题封面：多人共创挑战赛企划">
+          <div class="dts-topic-body">
+            <h3>双人共创挑战 · 主题接力赛</h3>
+            <p>两人一组交替完成同一个主题，考验默契与风格融合，优秀组将获得联名推荐。</p>
+            <span class="dts-topic-state dts-off"><i></i>即将开启 · 11.22 报名</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者矩阵 -->
+  <section class="dts-section" id="dts-creators">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>创作者矩阵 <em>这里的每一个人都在拍</em></h2>
+        <p>来自不同领域的创作者，用各自的方式参与每日主题。点击「查看档案」可了解他们的代表作品与擅长方向。</p>
+      </div>
+      <div class="dts-creator-grid">
+        <article class="dts-creator-card">
+          <div class="dts-creator-avatar" style="background:linear-gradient(140deg,#2bb3a3,#1c7a70);">林</div>
+          <h3>林深见野</h3>
+          <p class="dts-creator-field">街头纪实 · 城市影像</p>
+          <p>擅长在城市缝隙里找故事，连续 46 天完成每日主题打卡。</p>
+          <div class="dts-creator-nums">
+            <div><b>126</b>作品</div>
+            <div><b>8.4万</b>关注</div>
+          </div>
+          <button class="dts-creator-more" data-dts-creator="林深见野">查看档案</button>
+        </article>
+        <article class="dts-creator-card">
+          <div class="dts-creator-avatar" style="background:linear-gradient(140deg,#e0a93a,#b4771f);">周</div>
+          <h3>周屿的观察室</h3>
+          <p class="dts-creator-field">行业观察 · 深度访谈</p>
+          <p>用访谈拆解创意行业的方法论，主持《评审室的一天》系列。</p>
+          <div class="dts-creator-nums">
+            <div><b>89</b>作品</div>
+            <div><b>6.1万</b>关注</div>
+          </div>
+          <button class="dts-creator-more" data-dts-creator="周屿的观察室">查看档案</button>
+        </article>
+        <article class="dts-creator-card">
+          <div class="dts-creator-avatar" style="background:linear-gradient(140deg,#7c6bd6,#4e3f9e);">陈</div>
+          <h3>陈默剪片室</h3>
+          <p class="dts-creator-field">剪辑教程 · 节奏研究</p>
+          <p>专注短周期创作的剪辑方法论，作品以干净利落的信息节奏见长。</p>
+          <div class="dts-creator-nums">
+            <div><b>74</b>作品</div>
+            <div><b>5.7万</b>关注</div>
+          </div>
+          <button class="dts-creator-more" data-dts-creator="陈默剪片室">查看档案</button>
+        </article>
+        <article class="dts-creator-card">
+          <div class="dts-creator-avatar" style="background:linear-gradient(140deg,#d1697f,#a13e57);">苏</div>
+          <h3>苏禾慢半拍</h3>
+          <p class="dts-creator-field">人物纪录 · 情感故事</p>
+          <p>把镜头对准普通人，记录第一次参赛、第一次被看见的真实反应。</p>
+          <div class="dts-creator-nums">
+            <div><b>52</b>作品</div>
+            <div><b>4.3万</b>关注</div>
+          </div>
+          <button class="dts-creator-more" data-dts-creator="苏禾慢半拍">查看档案</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 榜单 -->
+  <section class="dts-section dts-section-alt" id="dts-rank">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>数据榜单 <em>热度、口碑与新人</em></h2>
+        <p>榜单按日更新，综合完播率、互动量与社区投票生成，仅统计原创正版内容。</p>
+      </div>
+      <div class="dts-rank-wrap">
+        <div class="dts-rank-list">
+          <h3>今日主题热度榜 <span>11.19 更新</span></h3>
+          <div class="dts-rank-item"><span class="dts-rank-no">1</span><span class="dts-rank-title">凌晨四点的城市清晨，我在便利店门口等天亮</span><span class="dts-rank-score">98.6</span></div>
+          <div class="dts-rank-item"><span class="dts-rank-no">2</span><span class="dts-rank-title">用一支手机拍完今日主题：光线不够时的三个办法</span><span class="dts-rank-score">95.2</span></div>
+          <div class="dts-rank-item"><span class="dts-rank-no">3</span><span class="dts-rank-title">评审室的一天：今日主题评分标准完整复盘</span><span class="dts-rank-score">92.8</span></div>
+          <div class="dts-rank-item"><span class="dts-rank-no">4</span><span class="dts-rank-title">新人参赛攻略：只有你能拍的那个角度</span><span class="dts-rank-score">90.4</span></div>
+          <div class="dts-rank-item"><span class="dts-rank-no">5</span><span class="dts-rank-title">双人共创挑战预告：主题接力赛规则解读</span><span class="dts-rank-score">87.9</span></div>
+        </div>
+        <div class="dts-rank-list">
+          <h3>新人榜与口碑榜 <span>本周累计</span></h3>
+          <div class="dts-rank-item"><span class="dts-rank-no">1</span><span class="dts-rank-title">苏禾慢半拍 · 首次参赛即进前十</span><span class="dts-rank-score">口碑 4.9</span></div>
+          <div class="dts-rank-item"><span class="dts-rank-no">2</span><span class="dts-rank-title">阿柚不加班 · 选题攻略被收藏 2,051 次</span><span class="dts-rank-score">口碑 4.8</span></div>
+          <div class="dts-rank-item"><span class="dts-rank-no">3</span><span class="dts-rank-title">陈默剪片室 · 剪辑干货系列持续更新</span><span class="dts-rank-score">口碑 4.7</span></div>
+          <div class="dts-rank-item"><span class="dts-rank-no">4</span><span class="dts-rank-title">小满的猫 · 生活流主题记录一个月</span><span class="dts-rank-score">口碑 4.6</span></div>
+          <div class="dts-rank-item"><span class="dts-rank-no">5</span><span class="dts-rank-title">旧街灯光 · 实验影像风格稳定输出</span><span class="dts-rank-score">口碑 4.5</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 -->
+  <section class="dts-section" id="dts-reviews">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>社区评价 <em>来自不同角度的声音</em></h2>
+        <p>这些评价来自参赛者、观众与合作品牌，语气与关注点各不相同，我们保留了原文。</p>
+      </div>
+      <div class="dts-review-grid">
+        <article class="dts-review-card">
+          <div class="dts-review-stars">★★★★★</div>
+          <p>连续参加了两周每日主题，最大的感受是节奏被带起来了。每天都有一个明确的题目，反而比自由创作更容易出片。</p>
+          <div class="dts-review-user"><span class="dts-avatar" style="background:#2bb3a3;">方</span><span><b>方寸之间</b>参赛创作者</span></div>
+        </article>
+        <article class="dts-review-card">
+          <div class="dts-review-stars">★★★★★</div>
+          <p>爆料核验流程公开这点真的很加分。以前参加别的比赛，评分标准总感觉是个黑箱，这里至少你知道分是怎么来的。</p>
+          <div class="dts-review-user"><span class="dts-avatar" style="background:#e0a93a;">老</span><span><b>老周拍片</b>独立影像作者</span></div>
+        </article>
+        <article class="dts-review-card">
+          <div class="dts-review-stars">★★★★☆</div>
+          <p>新人扶持计划帮我改了两版选题，编辑给的建议很具体，不是那种「再多拍拍」的空话。就是名额有点紧张。</p>
+          <div class="dts-review-user"><span class="dts-avatar" style="background:#d1697f;">小</span><span><b>小满的猫</b>新人创作者</span></div>
+        </article>
+        <article class="dts-review-card">
+          <div class="dts-review-stars">★★★★★</div>
+          <p>作为合作方，我们做过一次联名主题。平台对内容品质的把控比预期严格，交付节奏也很清晰，对接沟通顺畅。</p>
+          <div class="dts-review-user"><span class="dts-avatar" style="background:#3b7f99;">合</span><span><b>某文创品牌</b>合作品牌方</span></div>
+        </article>
+        <article class="dts-review-card">
+          <div class="dts-review-stars">★★★★☆</div>
+          <p>视频质量整体在线，尤其是爆料区那些幕后内容，比正片还好看。希望后面能多做一些长一点的复盘。</p>
+          <div class="dts-review-user"><span class="dts-avatar" style="background:#7c6bd6;">阿</span><span><b>阿哲不看剧</b>社区观众</span></div>
+        </article>
+        <article class="dts-review-card">
+          <div class="dts-review-stars">★★★★★</div>
+          <p>手机端体验挺顺的，搜索和筛选都不绕。唯一建议是榜单能不能加个按题材筛，找同类型作品会更快。</p>
+          <div class="dts-review-user"><span class="dts-avatar" style="background:#4a7c8f;">林</span><span><b>林间有风</b>长期用户</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 企业动态 -->
+  <section class="dts-section dts-section-alt" id="dts-news">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>企业动态 <em>官方发布与更新日志</em></h2>
+        <p>平台规则、功能与合作信息的官方发布，按时间倒序排列。</p>
+      </div>
+      <div class="dts-news-list">
+        <article class="dts-news-item">
+          <time datetime="2026-11-19">2026 年 11 月 19 日</time>
+          <h3>爆料入口支持短视频附件上传</h3>
+          <p>即日起，赛事线索爆料可直接附带 60 秒以内的视频材料，核验团队将在 6 小时内完成初核并反馈。</p>
+        </article>
+        <article class="dts-news-item">
+          <time datetime="2026-11-16">2026 年 11 月 16 日</time>
+          <h3>11 月主题赛季评分维度更新</h3>
+          <p>新增「现场感」评分项，权重 15%，同步调整叙事完整度与创意表达的占比，完整说明已在帮助中心更新。</p>
+        </article>
+        <article class="dts-news-item">
+          <time datetime="2026-11-12">2026 年 11 月 12 日</time>
+          <h3>与三家文创品牌达成年度合作</h3>
+          <p>平台将与合作品牌共同发起季度联名主题，优秀作品将进入线下展映与品牌联名礼盒计划。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作 + FAQ + 联系 -->
+  <section class="dts-section" id="dts-faq">
+    <div class="dts-shell">
+      <div class="dts-section-head">
+        <h2>合作与帮助 <em>常见问题一次说清</em></h2>
+        <p>关于参赛、爆料、版权与合作的高频问题，点击标题即可展开查看。</p>
+      </div>
+
+      <div class="dts-partner-row">
+        <div class="dts-partner">光屿影像</div>
+        <div class="dts-partner">北岸文创</div>
+        <div class="dts-partner">拾光器材</div>
+        <div class="dts-partner">城市声音计划</div>
+        <div class="dts-partner">慢速工作室</div>
+      </div>
+
+      <div class="dts-faq">
+        <details open>
+          <summary>每日主题几点发布，参赛有截止时间吗？</summary>
+          <p>每日 09:00 发布当日主题，作品上传通道在次日 24:00 关闭。逾期作品可继续上传，但会进入下一期专题展示，不参与当日的热度与投票统计。</p>
+        </details>
+        <details>
+          <summary>爆料线索需要提供哪些信息才算有效？</summary>
+          <p>建议提供时间、地点、事件经过与可核验的原始素材（图片或短视频）。涉及第三方隐私的内容请先做遮挡处理，官方核验组会在初核后与提交者确认细节。</p>
+        </details>
+        <details>
+          <summary>投稿作品的版权归属如何约定？</summary>
+          <p>作品版权归创作者本人所有。投稿即视为授权平台在官方渠道进行展示、推荐与专题收录，商业用途会另行签署授权协议，创作者可随时申请下架。</p>
+        </details>
+        <details>
+          <summary>可以使用 AI 生成素材参与主题赛吗？</summary>
+          <p>可以，但需在作品说明中如实标注 AI 参与环节与比例。涉及真实人物、新闻现场的爆料类内容不可使用 AI 合成，一经发现将取消当期参赛资格。</p>
+        </details>
+        <details>
+          <summary>新人扶持计划怎么报名？</summary>
+          <p>在专题页点击「新人扶持计划」进入报名入口，填写创作方向与代表作品链接即可。名额按批次开放，审核通过后会有编辑一对一沟通选题。</p>
+        </details>
+        <details>
+          <summary>企业或品牌如何发起联名主题？</summary>
+          <p>可通过页面底部的合作联系方式提交需求，说明品牌背景、目标人群与期望档期。平台会评估主题契合度并给出定制方案与排期建议。</p>
+        </details>
+        <details>
+          <summary>视频加载慢或上传失败怎么办？</summary>
+          <p>建议优先使用稳定的网络环境，并将视频控制在平台推荐参数内。若多次失败，可通过反馈入口提交问题截图，技术团队会在工作时间内响应。</p>
+        </details>
+        <details>
+          <summary>榜单数据多久更新一次，如何计算？</summary>
+          <p>热度榜按日更新，综合完播率、互动量与社区投票加权计算；口碑榜按周更新，参考评论质量与收藏比例。所有数据仅统计原创正版内容。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section class="dts-section" id="dts-contact">
+    <div class="dts-shell">
+      <div class="dts-contact-box">
+        <div>
+          <h2>联系我们，参与下一场主题</h2>
+          <p>无论你是想投稿、报名参赛、提交爆料线索，还是希望发起品牌联名主题，都可以通过以下方式找到官方团队。</p>
+          <ul class="dts-contact-list">
+            <li><b>商务合作</b><span>brand@dts-theme.example</span></li>
+            <li><b>内容投稿</b><span>submit@dts-theme.example</span></li>
+            <li><b>爆料线索</b><span>tip@dts-theme.example</span></li>
+            <li><b>工作时间</b><span>周一至周日 09:00 – 21:00</span></li>
+          </ul>
+        </div>
+        <div class="dts-contact-actions">
+          <button class="dts-btn dts-btn-gold" data-dts-submit>我要投稿</button>
+          <button class="dts-btn dts-btn-teal" data-dts-share>分享本站</button>
+          <button class="dts-btn dts-btn-ghost" data-dts-share>复制页面链接</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="dts-footer">
+  <div class="dts-shell">
+    <div class="dts-footer-grid">
+      <div>
+        <div class="dts-logo">
+          <svg class="dts-logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1c2b4a"/>
+            <circle cx="32" cy="32" r="17" fill="none" stroke="#ffd166" stroke-width="4"/>
+            <path d="M27 24l16 8-16 8z" fill="#ffd166"/>
+          </svg>
+          <span class="dts-logo-text">
+            <strong>每日主题大赛爆料在线</strong>
+            <span>BAOLIAO ONLINE</span>
+          </span>
+        </div>
+        <p>每日主题大赛爆料在线官方网站，聚焦每日创意主题挑战与赛事爆料的视频品牌社区。我们坚持原创、正版与高清标准，持续运营一个专业而温暖的创意内容生态。</p>
+      </div>
+      <div>
+        <h4>快速导航</h4>
+        <ul class="dts-footer-links">
+          <li><a href="#dts-focus">赛事焦点</a></li>
+          <li><a href="#dts-videos">爆料视频</a></li>
+          <li><a href="#dts-topics">主题专题</a></li>
+          <li><a href="#dts-creators">创作者</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与方式</h4>
+        <ul class="dts-footer-links">
+          <li><a href="#dts-rank">数据榜单</a></li>
+          <li><a href="#dts-faq">帮助中心</a></li>
+          <li><a href="#dts-contact">品牌合作</a></li>
+          <li><a href="#dts-news">企业动态</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>官方信息</h4>
+        <p style="margin-top:0;">运营主体：每日主题文化创意（示例）有限公司<br>内容合作：brand@dts-theme.example<br>持续运营中 · 官方发布 · 值得信赖</p>
+      </div>
+    </div>
+    <div class="dts-footer-bottom">
+      <span>© 2026 每日主题大赛爆料在线 官方网站 版权所有</span>
+      <span>备案号：示例备 2026000000 号</span>
+      <span><a href="#dts-top">返回顶部</a></span>
+    </div>
+  </div>
+</footer>
+
+<button class="dts-to-top" id="dtsToTop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24"><path d="M12 5l7 7-1.4 1.4L13 8.8V20h-2V8.8L6.4 13.4 5 12z"/></svg>
+</button>
+
+<div class="dts-toast" id="dtsToast" role="status" aria-live="polite"></div>
+
+<!-- 弹窗：分享 -->
+<div class="dts-modal-mask" id="dtsShareMask">
+  <div class="dts-modal" role="dialog" aria-modal="true" aria-labelledby="dtsShareTitle">
+    <h3 id="dtsShareTitle">分享本站</h3>
+    <p class="dts-modal-sub">选择渠道，或直接复制页面链接分享给朋友。</p>
+    <div class="dts-share-list">
+      <button data-dts-channel="微信">微信</button>
+      <button data-dts-channel="微博">微博</button>
+      <button data-dts-channel="QQ">QQ</button>
+      <button data-dts-channel="复制链接">复制链接</button>
+    </div>
+    <div class="dts-modal-row">
+      <button class="dts-modal-cancel" data-dts-close>关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 弹窗：投稿 -->
+<div class="dts-modal-mask" id="dtsSubmitMask">
+  <div class="dts-modal" role="dialog" aria-modal="true" aria-labelledby="dtsSubmitTitle">
+    <h3 id="dtsSubmitTitle">投稿 / 爆料线索提交</h3>
+    <p class="dts-modal-sub">填写基本信息，官方编辑部会在 24 小时内与你联系。</p>
+    <label for="dtsSubmitName">称呼</label>
+    <input type="text" id="dtsSubmitName" placeholder="怎么称呼你">
+    <label for="dtsSubmitContact">联系方式</label>
+    <input type="text" id="dtsSubmitContact" placeholder="邮箱或社交账号">
+    <label for="dtsSubmitMsg">作品或线索说明</label>
+    <textarea id="dtsSubmitMsg" placeholder="简单描述作品主题、创作思路或爆料线索"></textarea>
+    <div class="dts-modal-row">
+      <button class="dts-modal-cancel" data-dts-close>取消</button>
+      <button class="dts-btn dts-btn-teal" id="dtsSubmitSend">提交</button>
+    </div>
+  </div>
+</div>
+
+<!-- 弹窗：创作者档案 -->
+<div class="dts-modal-mask" id="dtsCreatorMask">
+  <div class="dts-modal" role="dialog" aria-modal="true" aria-labelledby="dtsCreatorTitle">
+    <h3 id="dtsCreatorTitle">创作者档案</h3>
+    <p class="dts-modal-sub" id="dtsCreatorSub">档案信息</p>
+    <div id="dtsCreatorBody" style="font-size:.88rem;color:#3d4c67;line-height:1.85;"></div>
+    <div class="dts-modal-row">
+      <button class="dts-modal-cancel" data-dts-close>关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 弹窗：评论 -->
+<div class="dts-modal-mask" id="dtsCommentMask">
+  <div class="dts-modal" role="dialog" aria-modal="true" aria-labelledby="dtsCommentTitle">
+    <h3 id="dtsCommentTitle">评论</h3>
+    <p class="dts-modal-sub">社区讨论区，友善表达，理性交流。</p>
+    <div id="dtsCommentBody" style="font-size:.86rem;color:#3d4c67;line-height:1.8;"></div>
+    <div class="dts-modal-row">
+      <button class="dts-modal-cancel" data-dts-close>关闭</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- 移动端导航 ---------- */
+  var navToggle = document.getElementById('dtsNavToggle');
+  var mainNav = document.getElementById('dtsMainNav');
+  navToggle.addEventListener('click', function(){
+    var open = mainNav.classList.toggle('dts-open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mainNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(window.innerWidth <= 860){
+        mainNav.classList.remove('dts-open');
+        navToggle.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+
+  /* ---------- 搜索提示 ---------- */
+  var searchInput = document.getElementById('dtsSearchInput');
+  var searchHint = document.getElementById('dtsSearchHint');
+  var searchPool = ['城市清晨','爆料线索','剪辑攻略','新人扶持','主题接力','评审复盘','热度榜','双人共创'];
+  searchInput.addEventListener('input', function(){
+    var q = this.value.trim();
+    if(!q){ searchHint.classList.remove('dts-show'); return; }
+    var hits = searchPool.filter(function(k){ return k.indexOf(q) > -1; });
+    if(hits.length){
+      searchHint.innerHTML = '匹配到主题：' + hits.map(function(h){ return '<strong>' + h + '</strong>'; }).join('、');
+    }else{
+      searchHint.innerHTML = '暂无完全匹配的「' + q.replace(/</g,'&lt;') + '」，试试「城市清晨」或「剪辑攻略」。';
+    }
+    searchHint.classList.add('dts-show');
+  });
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      var q = this.value.trim();
+      showToast(q ? '已为你搜索「' + q + '」相关内容' : '请输入搜索关键词');
+    }
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.dts-search')) searchHint.classList.remove('dts-show');
+  });
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById('dtsToast');
+  var toastTimer = null;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('dts-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('dts-show'); }, 2200);
+  }
+
+  /* ---------- 点赞 / 收藏 ---------- */
+  document.querySelectorAll('[data-dts-like]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var span = btn.querySelector('span');
+      var num = parseInt(span.textContent.replace(/,/g,''), 10) || 0;
+      var liked = btn.classList.toggle('dts-acted');
+      num += liked ? 1 : -1;
+      if(num < 0) num = 0;
+      span.textContent = num.toLocaleString('en-US');
+      showToast(liked ? '已点赞' : '已取消点赞');
+    });
+  });
+  document.querySelectorAll('[data-dts-fav]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var on = btn.classList.toggle('dts-acted');
+      btn.childNodes[btn.childNodes.length - 1].textContent = on ? '已收藏' : '收藏';
+      showToast(on ? '已收藏，可在个人中心查看' : '已取消收藏');
+    });
+  });
+
+  /* ---------- 弹窗通用 ---------- */
+  function openMask(mask){ mask.classList.add('dts-show'); document.body.style.overflow = 'hidden'; }
+  function closeMask(mask){ mask.classList.remove('dts-show'); document.body.style.overflow = ''; }
+  document.querySelectorAll('[data-dts-close]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var mask = btn.closest('.dts-modal-mask');
+      if(mask) closeMask(mask);
+    });
+  });
+  document.querySelectorAll('.dts-modal-mask').forEach(function(mask){
+    mask.addEventListener('click', function(e){
+      if(e.target === mask) closeMask(mask);
+    });
+  });
+
+  /* ---------- 分享 ---------- */
+  var shareMask = document.getElementById('dtsShareMask');
+  document.querySelectorAll('[data-dts-share]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openMask(shareMask); });
+  });
+  document.querySelectorAll('[data-dts-channel]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var ch = btn.getAttribute('data-dts-channel');
+      if(ch === '复制链接'){
+        copyLink();
+      }else{
+        showToast('已打开' + ch + '分享窗口');
+      }
+    });
+  });
+  function copyLink(){
+    var url = window.location.href.split('#')[0];
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){
+        showToast('页面链接已复制');
+      }).catch(function(){
+        showToast('复制失败，请手动复制地址栏链接');
+      });
+    }else{
+      showToast('当前环境不支持自动复制，请手动复制地址栏链接');
+    }
+  }
+
+  /* ---------- 评论 ---------- */
+  var commentMask = document.getElementById('dtsCommentMask');
+  var commentBody = document.getElementById('dtsCommentBody');
+  var commentTexts = [
+    '凌晨四点那段真的很有力量，光线处理得很克制，看完想去拍点什么。',
+    '请问剪辑软件是哪一款？节奏点卡得很舒服。',
+    '作为新人看完攻略受益很多，尤其是选题拆解那一步。',
+    '评审复盘这一段信息量很大，建议做成固定栏目。'
+  ];
+  document.querySelectorAll('[data-dts-comment]').forEach(function(btn, idx){
+    btn.addEventListener('click', function(){
+      commentBody.innerHTML = commentTexts.map(function(t){
+        return '<p style="padding:.6rem 0;border-bottom:1px dashed #e2e8f2;">' + t + '</p>';
+      }).join('') + '<p style="padding-top:.8rem;color:#6b7a93;font-size:.8rem;">共 4 条讨论 · 来自主题「' +
+        (idx === 0 ? '城市清晨' : idx === 1 ? '评审复盘' : '新人攻略') + '」</p>';
+      openMask(commentMask);
+    });
+  });
+
+  /* ---------- 投稿 ---------- */
+  var submitMask = document.getElementById('dtsSubmitMask');
+  document.querySelectorAll('[data-dts-submit]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openMask(submitMask); });
+  });
+  document.getElementById('dtsSubmitSend').addEventListener('click', function(){
+    var name = document.getElementById('dtsSubmitName').value.trim();
+    var contact = document.getElementById('dtsSubmitContact').value.trim();
+    if(!name || !contact){
+      showToast('请先填写称呼与联系方式');
+      return;
+    }
+    closeMask(submitMask);
+    showToast('提交成功，编辑部会在 24 小时内联系你');
+    document.getElementById('dtsSubmitName').value = '';
+    document.getElementById('dtsSubmitContact').value = '';
+    document.getElementById('dtsSubmitMsg').value = '';
+  });
+
+  /* ---------- 创作者档案 ---------- */
+  var creatorMask = document.getElementById('dtsCreatorMask');
+  var creatorSub = document.getElementById('dtsCreatorSub');
+  var creatorBody = document.getElementById('dtsCreatorBody');
+  var creatorData = {
+    '林深见野':'擅长城市纪实与街头影像。代表作品《凌晨四点的城市清晨》《菜市场最后一盏灯》。连续 46 天完成每日主题打卡，是平台最早一批全勤创作者之一。合作过两家城市文化品牌，作品曾进入季度优秀作品墙。',
+    '周屿的观察室':'行业观察者与深度访谈主持。代表作品《评审室的一天》系列，累计 6 期。擅长把赛事规则、评分维度与创作方法讲清楚，是许多新人参赛前会先看的栏目。',
+    '陈默剪片室':'剪辑方向的干货型创作者。代表作品《同一支片子剪三版》，以干净利落的信息节奏著称。目前主要更新短周期创作的剪辑判断与工具技巧。',
+    '苏禾慢半拍':'人物纪录与情感故事创作者。代表作品《第一次参赛就进前十》，用第一视角记录素人创作者的真实状态。作品风格安静，评论区互动质量较高。'
+  };
+  document.querySelectorAll('[data-dts-creator]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var name = btn.getAttribute('data-dts-creator');
+      creatorSub.textContent = name + ' · 官方认证创作者';
+      creatorBody.textContent = creatorData[name] || '暂无更多档案信息。';
+      openMask(creatorMask);
+    });
+  });
+
+  /* ---------- 回到顶部 ---------- */
+  var toTop = document.getElementById('dtsToTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 560){ toTop.classList.add('dts-show'); }
+    else{ toTop.classList.remove('dts-show'); }
+  });
+  toTop.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---------- 数字滚动 ---------- */
+  var counted = false;
+  function countUp(){
+    if(counted) return;
+    counted = true;
+    document.querySelectorAll('[data-dts-count]').forEach(function(el){
+      var target = parseInt(el.getAttribute('data-dts-count'), 10);
+      var start = 0, dur = 1200, t0 = null;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        var val = Math.floor(start + (target - start) * (1 - Math.pow(1 - p, 3)));
+        el.textContent = val.toLocaleString('en-US');
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var heroStats = document.querySelector('.dts-hero-stats');
+    if(heroStats){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if(en.isIntersecting) countUp(); });
+      }, { threshold: .4 });
+      io.observe(heroStats);
+    }
+  }else{
+    countUp();
+  }
+
+})();
+</script>
+
+<div class="dts-standalone-script-placeholder" style="display:none;"></div>
+</body>
+                </html>
